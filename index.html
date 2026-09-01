@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albin Karintholil Robert: AI/ML &amp; Data Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233D;
+    --paper:#F2F3F5;
+    --paper-raise:#EAECEF;
+    --graphite:#4B5563;
+    --graphite-soft:#7A8494;
+    --brass:#835D14;
+    --brass-soft:#C9A75A;
+    --line:#DBDFE4;
+    --white:#FCFCFB;
+    --serif:'Newsreader', Georgia, serif;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+    --mono:'IBM Plex Mono', 'Courier New', monospace;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--brass-soft); color:var(--ink);}
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,243,245,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+    flex-wrap:wrap;
+    gap:6px 20px;
+  }
+  .wordmark{
+    font-family:var(--serif); font-size:18px; font-weight:600;
+    letter-spacing:0.01em;
+  }
+  nav{display:flex; gap:28px;}
+  nav a{
+    font-size:14px; color:var(--graphite);
+    padding:4px 0; border-bottom:1px solid transparent;
+    transition:border-color .15s, color .15s;
+  }
+  nav a:hover{color:var(--ink); border-color:var(--brass);}
+  .nav-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 56px;}
+  .hero-eyebrow{
+    font-family:var(--mono); font-size:13px; color:var(--brass);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(34px, 5vw, 52px);
+    line-height:1.14;
+    max-width:15ch;
+    letter-spacing:-0.01em;
+  }
+  .hero-sub{
+    margin-top:22px;
+    max-width:58ch;
+    font-size:17.5px;
+    color:var(--graphite);
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex; gap:14px; flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn{
+    font-size:14.5px; font-weight:500;
+    padding:11px 20px;
+    border-radius:2px;
+    display:inline-block;
+  }
+  .btn-primary{
+    background:var(--ink); color:var(--white);
+    transition:background .15s;
+  }
+  .btn-primary:hover{background:#243657;}
+  .btn-secondary{
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding:11px 2px;
+  }
+  .btn-secondary:hover{border-color:var(--brass); color:var(--brass);}
+
+  /* ---------- scoreboard ---------- */
+  .scoreboard{
+    margin-top:64px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+  }
+  .score{
+    padding:26px 24px;
+    border-left:1px solid var(--line);
+  }
+  .score:first-child{border-left:none;}
+  .score-num{
+    font-family:var(--mono); font-weight:500;
+    font-size:26px; color:var(--brass);
+    display:block;
+  }
+  .score-label{
+    margin-top:6px;
+    font-size:13px; color:var(--graphite-soft);
+    line-height:1.4;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:84px 0;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:44px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;
+  }
+  .section-label{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:26px;
+  }
+  .section-count{
+    font-family:var(--mono); font-size:13px; color:var(--graphite-soft);
+  }
+
+  /* ---------- work ---------- */
+  .project{
+    padding:36px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+  }
+  .project:last-child{border-bottom:none;}
+  .project-flagship{
+    background:var(--white);
+    margin:0 -28px 36px;
+    padding:36px 28px;
+    border:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .project-meta{
+    font-family:var(--mono); font-size:12.5px; color:var(--graphite-soft);
+    line-height:1.7;
+  }
+  .project-meta .tag-pill{
+    display:inline-block;
+    color:var(--brass);
+    font-family:var(--mono);
+    font-size:11px;
+    margin-bottom:10px;
+  }
+  .project h3{
+    font-family:var(--serif); font-weight:600; font-size:22px;
+    margin-bottom:10px;
+  }
+  .project-body p{
+    color:var(--graphite);
+    max-width:62ch;
+    margin-bottom:14px;
+  }
+  .project-result{
+    font-size:15px;
+    color:var(--ink);
+    padding-left:14px;
+    border-left:2px solid var(--brass);
+    margin:16px 0 16px;
+    max-width:60ch;
+  }
+  .project-result b{font-family:var(--mono); font-weight:500; color:var(--brass);}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tags span{
+    font-family:var(--mono); font-size:11.5px;
+    color:var(--graphite);
+    background:var(--paper-raise);
+    padding:5px 10px;
+    border-radius:2px;
+  }
+  .project-link{
+    display:inline-block; margin-top:18px;
+    font-size:13.5px; color:var(--ink);
+    border-bottom:1px solid var(--graphite-soft);
+  }
+  .project-link:hover{border-color:var(--brass); color:var(--brass);}
+
+  /* ---------- experience timeline ---------- */
+  .timeline{position:relative; padding-left:28px;}
+  .timeline::before{
+    content:'';
+    position:absolute; left:5px; top:8px; bottom:8px;
+    width:1px; background:var(--line);
+  }
+  .role{position:relative; padding-bottom:48px;}
+  .role:last-child{padding-bottom:0;}
+  .role::before{
+    content:'';
+    position:absolute; left:-28px; top:6px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--brass);
+  }
+  .role-head{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px;
+    margin-bottom:6px;
+  }
+  .role-title{font-family:var(--serif); font-weight:600; font-size:19px;}
+  .role-company{color:var(--brass); font-size:15px;}
+  .role-dates{
+    font-family:var(--mono); font-size:12.5px; color:var(--graphite-soft);
+    margin-left:auto;
+  }
+  .role ul{margin-top:12px; padding-left:18px; color:var(--graphite);}
+  .role li{margin-bottom:7px; max-width:68ch;}
+
+  /* ---------- skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:36px;
+  }
+  .skill-group h4{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:16px; margin-bottom:14px;
+    color:var(--ink);
+  }
+  .skill-group ul{list-style:none;}
+  .skill-group li{
+    font-size:14px; color:var(--graphite);
+    padding:5px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-group li:last-child{border-bottom:none;}
+
+  /* ---------- education ---------- */
+  .edu{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .edu-card{
+    padding:26px;
+    background:var(--white);
+    border:1px solid var(--line);
+  }
+  .edu-card .deg{font-family:var(--serif); font-weight:600; font-size:18px;}
+  .edu-card .inst{color:var(--brass); font-size:14.5px; margin-top:4px;}
+  .edu-card .meta{
+    font-family:var(--mono); font-size:12px; color:var(--graphite-soft);
+    margin-top:10px;
+  }
+  .edu-card .grade{
+    margin-top:14px; font-size:14px; color:var(--graphite);
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink); color:var(--white);
+    padding:64px 0 40px;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:32px;
+  }
+  footer h2{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(26px,4vw,36px);
+    max-width:14ch;
+  }
+  .contact-list{display:flex; flex-direction:column; gap:10px;}
+  .contact-list a, .contact-list span{
+    font-size:14.5px; color:#C9D0DC;
+  }
+  .contact-list a:hover{color:var(--brass-soft);}
+  .foot-bottom{
+    margin-top:56px; padding-top:22px;
+    border-top:1px solid rgba(255,255,255,0.12);
+    font-size:12.5px; color:#7C88A0;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- entrance (single orchestrated moment) ---------- */
+  .hero-eyebrow, .hero h1, .hero-sub, .hero-actions{
+    opacity:0; animation:rise .7s ease forwards;
+  }
+  .hero h1{animation-delay:.08s;}
+  .hero-sub{animation-delay:.16s;}
+  .hero-actions{animation-delay:.24s;}
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-eyebrow, .hero h1, .hero-sub, .hero-actions{animation:none; opacity:1;}
+  }
+  @media print{
+    .hero-eyebrow, .hero h1, .hero-sub, .hero-actions{animation:none; opacity:1; transform:none;}
+    header{position:static;}
+    .btn-primary[download]{display:none;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .scoreboard{grid-template-columns:repeat(2,1fr);}
+    .score{border-left:1px solid var(--line);}
+    .score:nth-child(2n+1){border-left:none;}
+    .score:nth-child(n+3){border-top:1px solid var(--line);}
+    .project{grid-template-columns:1fr; gap:14px;}
+    .skills-grid{grid-template-columns:repeat(2,1fr); row-gap:28px;}
+    .edu{grid-template-columns:1fr;}
+    nav{gap:16px;}
+    nav a{font-size:12.5px;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .hero{padding:64px 0 40px;}
+    .scoreboard{grid-template-columns:1fr;}
+    .score{border-left:none !important; border-top:1px solid var(--line);}
+    .score:first-child{border-top:none;}
+    footer .wrap{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="wordmark">Albin Karintholil Robert</div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">AI/ML Computational Science Associate | Kochi, India</div>
+    <h1>I trace models back to the data decisions that made them work.</h1>
+    <p class="hero-sub">Two years building applied ML and GenAI systems, from fine-tuning transformers to shipping RAG pipelines, on a foundation of professional software engineering. I debug pipelines to root cause, not just symptoms, and I document what I build so other people can use it.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="Albin_Karintholil_Robert_Resume.pdf" download>Download resume</a>
+      <a class="btn btn-secondary" href="mailto:albinkrobert@gmail.com">albinkrobert@gmail.com</a>
+      <a class="btn btn-secondary" href="https://linkedin.com/in/albinkrobert" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-secondary" href="https://github.com/ALBINKROBERT" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score">
+        <span class="score-num">0.740</span>
+        <span class="score-label">Test F1: tuned XGBoost job-category classifier, beating DistilBERT and three baselines</span>
+      </div>
+      <div class="score">
+        <span class="score-num">98.76%</span>
+        <span class="score-label">Accuracy: neural-network mental-health prediction model, MSc thesis</span>
+      </div>
+      <div class="score">
+        <span class="score-num">0.8465</span>
+        <span class="score-label">ROC-AUC: telecom churn model, after fixing a SMOTE data-leakage bug</span>
+      </div>
+      <div class="score">
+        <span class="score-num">~85%</span>
+        <span class="score-label">Validation accuracy: 12-class dog-breed CNN with transfer learning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Selected work</span>
+      <span class="section-count">4 projects</span>
+    </div>
+
+    <div class="project-flagship">
+      <span class="tag-pill">Flagship | in progress</span>
+      <h3>Career Intelligence AI</h3>
+      <p style="color:var(--graphite); max-width:64ch;">An end-to-end GenAI application that predicts job categories from postings and answers career questions through a retrieval-augmented assistant, built to be genuinely useful, not a notebook demo.</p>
+      <div class="project-result">Comparative modeling across five approaches: <b>tuned XGBoost reached 0.740 test F1</b>, ahead of Random Forest, TF-IDF, and a fine-tuned DistilBERT transformer. SHAP explainability confirms seniority and industry as the dominant predictors. A local RAG pipeline (ChromaDB + Llama 3.2 via Ollama) grounds career guidance in real postings and an uploaded resume, with no data leaving the machine.</div>
+      <div class="tags">
+        <span>DistilBERT</span><span>XGBoost</span><span>SHAP</span><span>LangChain</span>
+        <span>ChromaDB</span><span>FastAPI</span><span>Streamlit</span><span>Docker</span>
+      </div>
+      <a class="project-link" href="#">View case study</a>
+    </div>
+
+    <div class="project">
+      <div class="project-meta">Data Scientist role<br>Technocolabs, 2023</div>
+      <div class="project-body">
+        <h3>Telecom customer churn prediction</h3>
+        <p>A full CRISP-DM pipeline on the IBM Telco dataset, comparing ten classification models to find the most reliable predictor of churn.</p>
+        <div class="project-result">Traced an unstable validation score to a <b>SMOTE data-leakage</b> bug inside cross-validation, rebuilt the resampling to run only within each fold, and confirmed <b>Logistic Regression at 0.8465 ROC-AUC</b> as the most robust model, then used SHAP and LIME to explain the drivers to business stakeholders.</div>
+        <div class="tags"><span>scikit-learn</span><span>SHAP</span><span>LIME</span><span>SMOTE</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-meta">Independent project<br>TensorFlow / Keras</div>
+      <div class="project-body">
+        <h3>Dog breed image classifier</h3>
+        <p>A CNN transfer-learning pipeline classifying images across 12 dog breeds, built end to end including data augmentation and evaluation.</p>
+        <div class="project-result">Diagnosed and fixed a broken data pipeline before training even started, then applied <b>MobileNetV2 transfer learning to reach ~85% validation accuracy</b>.</div>
+        <div class="tags"><span>TensorFlow</span><span>Keras</span><span>MobileNetV2</span><span>Data Augmentation</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-meta">MSc final project<br>University of Hertfordshire</div>
+      <div class="project-body">
+        <h3>Mental health illness prediction</h3>
+        <p>Compared five classification algorithms to predict mental-health conditions from a Kaggle survey dataset, then shipped the result behind a usable interface.</p>
+        <div class="project-result">A <b>neural network reached 98.76% accuracy with a 0.08% false-positive rate</b>, ahead of KNN, Random Forest, Decision Tree, and Naive Bayes, delivered through a Tkinter GUI so non-technical users could get predictions directly.</div>
+        <div class="tags"><span>Neural Networks</span><span>SMOTE</span><span>SelectKBest</span><span>Tkinter</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--paper-raise);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Experience</span>
+      <span class="section-count">2018 - present</span>
+    </div>
+
+    <div class="timeline">
+      <div class="role">
+        <div class="role-head">
+          <span class="role-title">Data Science Trainee</span>
+          <span class="role-company">Techmindz</span>
+          <span class="role-dates">Feb 2026 - Present | Kochi, India</span>
+        </div>
+        <ul>
+          <li>Building Career Intelligence AI end to end, fine-tuning DistilBERT for text classification and designing a RAG pipeline for a conversational career assistant grounded in real job data.</li>
+          <li>Practiced regression modeling (Linear Regression, Decision Tree, KNN, Random Forest) across vehicle, housing, and insurance datasets; built a car-price model reaching R-squared 0.45.</li>
+          <li>Built time-series forecasts (ARIMA, Prophet, Exponential Smoothing) on a year of daily sales data, using ADF and ACF/PACF analysis to guide parameter choices.</li>
+          <li>Traced an unexpected model-behaviour issue back to data leakage in an earlier classification project and rebuilt the pipeline to remove it.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <span class="role-title">Data Scientist</span>
+          <span class="role-company">Technocolabs</span>
+          <span class="role-dates">Jul 2022 - Apr 2023 | Remote</span>
+        </div>
+        <ul>
+          <li>Built a telecom customer churn prediction pipeline on the IBM Telco dataset, comparing ten classification models; traced an unstable validation score to a SMOTE data-leakage bug in cross-validation, rebuilt the resampling within each fold, and confirmed Logistic Regression at 0.8465 ROC-AUC as the most robust model, explaining drivers to stakeholders with SHAP and LIME.</li>
+          <li>Cleaned and analyzed financial data for a start-up investment client, then built a live dashboard for ongoing performance monitoring.</li>
+          <li>Built a peer-to-peer lending default classifier at 80%+ accuracy, directly reducing exposure to bad loans.</li>
+          <li>Modeled mortgage-backed security prepayment risk across three algorithms and identified the best candidate for deployment.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <span class="role-title">Systems Engineer</span>
+          <span class="role-company">Tata Consultancy Services</span>
+          <span class="role-dates">Jun 2018 - Apr 2021 | Kochi, India</span>
+        </div>
+        <ul>
+          <li>Built and maintained front-end components (HTML, JavaScript, React) inside an agile, cross-functional delivery team.</li>
+          <li>Owned debugging and troubleshooting during development and testing, using Jira and Git/GitHub for workflow.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Skills</span>
+      <span class="section-count">by category</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Languages &amp; data</h4>
+        <ul>
+          <li>Python</li><li>SQL</li><li>Java</li><li>JavaScript</li><li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>ML &amp; deep learning</h4>
+        <ul>
+          <li>scikit-learn | XGBoost</li><li>TensorFlow | Keras</li><li>PyTorch</li>
+          <li>ANN / CNN, transfer learning</li><li>Time-series (ARIMA, Prophet)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>GenAI &amp; NLP</h4>
+        <ul>
+          <li>LLMs &amp; prompt engineering</li><li>RAG | LangChain</li><li>ChromaDB (vector DB)</li>
+          <li>HuggingFace Transformers</li><li>SHAP / LIME explainability</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Tools &amp; practice</h4>
+        <ul>
+          <li>Flask | FastAPI | Streamlit</li><li>Git / GitHub</li><li>Jira | Trello | Agile/Scrum</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper-raise);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Education</span>
+      <span class="section-count">2014 - 2023</span>
+    </div>
+    <div class="edu">
+      <div class="edu-card">
+        <div class="deg">MSc, Data Science and Analytics</div>
+        <div class="inst">University of Hertfordshire, UK</div>
+        <div class="meta">Sep 2021 - Sep 2023 | Hatfield, UK</div>
+        <div class="grade">Grade: Distinction<br>Data Mining | Machine Learning &amp; Neural Networks | Statistical Foundations | Legal &amp; Ethical Practices</div>
+      </div>
+      <div class="edu-card">
+        <div class="deg">BEng, Mechanical Engineering</div>
+        <div class="inst">VSB Engineering College</div>
+        <div class="meta">Jun 2014 - May 2018 | Karur, India</div>
+        <div class="grade">CGPA: 8.41 / 10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk about your data.</h2>
+    <div class="contact-list">
+      <a href="mailto:albinkrobert@gmail.com">albinkrobert@gmail.com</a>
+      <a href="tel:+917639165772">+91 76391 65772</a>
+      <a href="https://linkedin.com/in/albinkrobert" target="_blank" rel="noopener">linkedin.com/in/albinkrobert</a>
+      <a href="https://github.com/ALBINKROBERT" target="_blank" rel="noopener">github.com/ALBINKROBERT</a>
+      <span>Kochi, Kerala, India</span>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>Albin Karintholil Robert</span>
+    <span>Updated 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
